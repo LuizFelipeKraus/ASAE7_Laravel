@@ -18,6 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', [UsuarioController::class, 'exibeCadastro'])->name('home');
 
-Route::get('/home', [UsuarioController::class, 'exibeCadastro']);
-Route::post('/lista_cadastros', [UsuarioController::class, 'addCadastro']);
+Route::post('/lista_cadastros', [UsuarioController::class, 'addCadastro'])->name('cadastro_salvo');
+
+Route::get('/listar', [UsuarioController::class, 'retornaLista'])->name('cadastro_lista');
+
+Route::get('/excluir/{id}', [UsuarioController::class, 'excluir'])->name('usuario_excluir');
+
+Route::get('/editar/{id}', [UsuarioController::class, 'editar'])->name('usuario_editar');
+
+Route::post('/alterar/{id}', [UsuarioController::class, 'alterar'])->name('usuario_alterar');
